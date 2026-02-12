@@ -38,3 +38,12 @@ export const SOCIAL_LINKS = [
     icon: <MessageCircle />,
   },
 ];
+
+export const EXPERTISE_AREAS = [
+  "Web Development",
+  "Agile Methodologies",
+  "Cloud Computing",
+  "Problem Solving",
+  "Team Collaboration",
+  "Continuous Learning",
+];
