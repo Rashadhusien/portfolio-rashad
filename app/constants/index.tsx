@@ -47,3 +47,38 @@ export const EXPERTISE_AREAS = [
   "Team Collaboration",
   "Continuous Learning",
 ];
+
+export const SKILLS_AREAS = [
+  {
+    title: "Languages & Tools",
+    skills: [
+      "html",
+      "css",
+      "js",
+      "ts",
+      "sass",
+      "webpack",
+      "vite",
+      "firebase",
+      "figma",
+      "tanstack",
+    ],
+  },
+  {
+    title: "Frameworks & Libraries",
+    skills: ["react", "next", "node", "tailwind", "shakra"],
+  },
+];
+export const TOOLS_AREAS = [
+  {
+    title: "Tools & Platforms",
+    skills: ["git", "cursor"],
+  },
+];
+
+export const DATABASES_AREAS = [
+  {
+    title: "Databases",
+    skills: ["mongo", "sql"],
+  },
+];

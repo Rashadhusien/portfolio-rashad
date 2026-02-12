@@ -368,7 +368,7 @@ body {
   object-fit: cover;
 }
 
-h1 {
+/* h1 {
   font-size: 5rem;
   line-height: 1;
   font-weight: 800;
@@ -392,7 +392,7 @@ h1 {
 h2 {
   font-size: 2rem;
   max-width: 400px;
-}
+} */
 
 .credit {
   font-family: Termina, sans-serif;

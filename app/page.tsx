@@ -8,6 +8,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
+import Skills from "@/components/Skills";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 
@@ -29,13 +30,14 @@ export default function Home() {
   );
 
   return (
-    <main id="smooth-wrapper" className="pt-20 relative  z-10 " ref={main}>
-      <div id="smooth-content" className="pt-20">
+    <main id="smooth-wrapper" className=" relative  z-10 " ref={main}>
+      <div id="smooth-content" className="">
         <Navbar />
         <Hero />
         <About />
+        <Skills />
         <Projects />
-        <div className="bg-dotted" />
+        {/* <div className="hidden md:block bg-dotted" /> */}
       </div>
     </main>
   );
