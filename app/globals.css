@@ -187,6 +187,29 @@
   left: 0;
   opacity: 0.5;
 }
+
+/* custom scrollbar */
+
+/* For Firefox */
+/* body {
+  scrollbar-width: thin;
+  scrollbar-color: #a0a0a5 #f4f4f4;
+} */
+
+/* For Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 20px;
+}
+
 /* start Navbar */
 .text {
   font-size: 10vw;

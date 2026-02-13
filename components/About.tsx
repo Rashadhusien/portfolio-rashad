@@ -1,20 +1,17 @@
 "use client";
-import { EXPERTISE_AREAS } from "@/app/constants";
-import SectionTitle from "./SectionTitle";
-import TechIconCloud from "./TechIconCloud";
-import { Button } from "./ui/button";
+
 import { useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
+import { Highlighter } from "./highlighter";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const About = () => {
   const firstParagraphRef = useRef<HTMLParagraphElement>(null);
   const secondParagraphRef = useRef<HTMLParagraphElement>(null);
-  // const expertiseRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     // First paragraph: starts light (opacity 1), fades to low opacity (0.3) as you scroll
@@ -52,41 +49,23 @@ const About = () => {
         },
       },
     );
-
-    // Expertise areas staggered animation
-    // if (expertiseRef.current) {
-    //   const buttons = expertiseRef.current.querySelectorAll("button");
-    //   gsap.fromTo(
-    //     buttons,
-    //     {
-    //       opacity: 0,
-    //       y: 30,
-    //       scale: 0.9,
-    //     },
-    //     {
-    //       opacity: 1,
-    //       y: 0,
-    //       scale: 1,
-    //       duration: 0.6,
-    //       ease: "back.out(1.2)",
-    //       stagger: 0.1,
-    //       scrollTrigger: {
-    //         trigger: expertiseRef.current,
-    //         start: "top 80%",
-    //         end: "bottom 20%",
-    //         scrub: true,
-    //       },
-    //     },
-    //   );
-    // }
   });
 
   return (
     <section id="about" className="py-20 container mx-auto z-30 relative ">
       <div className="container mx-auto px-4">
-        <SectionTitle title="About Me" />
+        <div className={`text-center mb-12 flex justify-center items-center `}>
+          <div className="relative">
+            <h2 className={`text-4xl md:text-5xl font-bold mb-4 `}>
+              <Highlighter action="underline" color="#8c5cff">
+                About Me
+              </Highlighter>
+            </h2>
+            {/* <div className="w-full h-1 bg-primary mx-auto"></div> */}
+          </div>
+        </div>{" "}
         <div className="container-text flex   items-center justify-center gap-4 w-full text-center  p-4 rounded-sm  ">
-          <p className="text-lg md:text-5xl leading-relaxed font-bold md:font-extrabold tracking-wide ">
+          <p className="text-lg md:text-5xl leading-relaxed font-bold max-w-6xl ">
             <span ref={firstParagraphRef}>
               I am a passionate software developer with experience in building
               web applications.
@@ -98,19 +77,13 @@ const About = () => {
           </p>
         </div>
       </div>
-      <Image
-        src="/right-pattern.svg"
-        alt="right pattern"
-        width={320}
-        height={700}
-        className="absolute top-1/2 right-0 -z-30 opacity-50"
-      />
+
       <Image
         src="/left-pattern.svg"
         alt="left pattern"
         width={220}
         height={500}
-        className="absolute -top-1/3 left-0 -z-30 opacity-50"
+        className="absolute -top-1/6 left-0 -z-30 opacity-50 w-[120px] h-[320px] md:w-[220px] md:h-[500px]"
       />
     </section>
   );

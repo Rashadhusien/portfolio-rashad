@@ -1,22 +1,67 @@
+"use client";
 import { DATABASES_AREAS, SKILLS_AREAS, TOOLS_AREAS } from "@/app/constants";
 import Image from "next/image";
-import React from "react";
+import { useRef } from "react";
+
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import SectionTitle from "./SectionTitle";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Skills = () => {
+  const firstSkillsRef = useRef<HTMLUListElement>(null);
+  const secondSkillsRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.fromTo(
+      firstSkillsRef.current,
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 0.6,
+        ease: "back.out(1.2)",
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: firstSkillsRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          scrub: true,
+        },
+      },
+    );
+    gsap.fromTo(
+      secondSkillsRef.current,
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 0.6,
+        ease: "back.out(1.2)",
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: secondSkillsRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          scrub: true,
+        },
+      },
+    );
+  });
   return (
     <section id="skills" className="container mx-auto py-20 z-10 relative">
-      <div className="flex flex-col  gap-4 mt-4 mx-10">
-        <span className="text-md font-bold uppercase tracking-wider mt-3">
-          Skills
-        </span>
-        <h2 className="text-6xl font-bold text-primary">My Skills</h2>
-        <p className="text-lg md:text-2xl leading-relaxed font-bold max-w-xl ">
-          I like to take responsibility to craft aesthetic user experience using
-          modern frontend architecture.
-        </p>
-      </div>
+      <SectionTitle
+        title="Skills"
+        spanTitle="My Skills"
+        description="I like to take responsibility to craft aesthetic user experience using
+          modern frontend architecture."
+      />
       <div className="flex flex-col  gap-4 mt-4 ">
-        <ul>
+        <ul ref={firstSkillsRef}>
           {SKILLS_AREAS.map((area) => (
             <div key={area.title} className="flex flex-col  gap-4 mt-4 mx-10">
               <span className="text-md font-bold uppercase tracking-wider mt-3">
@@ -37,7 +82,10 @@ const Skills = () => {
             </div>
           ))}
         </ul>
-        <div className="grid grid-cols-2 gap-8 mx-10 w-fit">
+        <div
+          className="grid grid-cols-2 gap-8 mx-10 w-fit"
+          ref={secondSkillsRef}
+        >
           <div>
             {DATABASES_AREAS.map((area) => (
               <div
@@ -92,6 +140,13 @@ const Skills = () => {
           </div>
         </div>
       </div>
+      <Image
+        src="/right-pattern.svg"
+        alt="right pattern"
+        width={320}
+        height={700}
+        className="absolute top-[-100px] ms:top-0 right-0 -z-30 opacity-70 w-[120px] h-[320px] md:w-[320px] md:h-[700px]"
+      />
     </section>
   );
 };
