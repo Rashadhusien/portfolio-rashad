@@ -44,7 +44,7 @@ const ScrollBasedVelocity = () => {
           Solving Software Architecture Software Engineering Problem Solving
           Software Architecture
         </ScrollVelocityRow>
-        <p className="text-3xl md:text-5xl lg:text-[4rem] text-center font-bold leading-relaxed my-10">
+        <p className="text-2xl md:text-5xl lg:text-[4rem] text-center font-bold leading-relaxed my-10">
           Interested In{" "}
           <span
             ref={spanRef}

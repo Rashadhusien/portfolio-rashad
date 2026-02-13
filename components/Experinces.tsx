@@ -7,7 +7,7 @@ import Image from "next/image";
 const Experinces = () => {
   return (
     <section id="experinces" className="relative container mx-auto">
-      <div className="mx-20 py-20">
+      <div className="sm:mx-20 sm:py-20">
         <SectionTitle
           spanTitle="work"
           title="Experinces"
