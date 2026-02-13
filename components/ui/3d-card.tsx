@@ -90,7 +90,7 @@ export const CardBody = ({
   );
 };
 
-type CardItemProps<T extends React.ElementType> = {
+type CardItemProps<T extends React.ElementType = "div"> = {
   as?: T;
   children: React.ReactNode;
   className?: string;
@@ -100,7 +100,42 @@ type CardItemProps<T extends React.ElementType> = {
   rotateX?: number | string;
   rotateY?: number | string;
   rotateZ?: number | string;
-} & React.ComponentPropsWithoutRef<T>;
+} & Omit<
+  React.ComponentPropsWithoutRef<T>,
+  keyof {
+    as?: unknown;
+    children?: unknown;
+    className?: unknown;
+    translateX?: unknown;
+    translateY?: unknown;
+    translateZ?: unknown;
+    rotateX?: unknown;
+    rotateY?: unknown;
+    rotateZ?: unknown;
+  }
+>;
+
+// Create a wrapper component for the polymorphic element
+const PolymorphicElement = React.forwardRef<
+  HTMLElement,
+  {
+    as: React.ElementType;
+    className?: string;
+    children?: React.ReactNode;
+  } & React.ComponentPropsWithoutRef<any>
+>(({ as: Tag = "div", className, children, ...props }, ref) => {
+  return (
+    <Tag
+      ref={ref}
+      className={cn("w-fit transition duration-200 ease-linear", className)}
+      {...props}
+    >
+      {children}
+    </Tag>
+  );
+});
+
+PolymorphicElement.displayName = "PolymorphicElement";
 
 export const CardItem = <T extends React.ElementType = "div">({
   as,
@@ -140,18 +175,24 @@ export const CardItem = <T extends React.ElementType = "div">({
         rotateZ(0deg)
       `;
     }
-  }, [isMouseEntered]);
+  }, [
+    isMouseEntered,
+    translateX,
+    translateY,
+    translateZ,
+    rotateX,
+    rotateY,
+    rotateZ,
+  ]);
 
   return (
-    <Tag
-      ref={ref as any}
-      className={cn("w-fit transition duration-200 ease-linear", className)}
-      {...rest}
-    >
+    <PolymorphicElement as={Tag} ref={ref} className={className} {...rest}>
       {children}
-    </Tag>
+    </PolymorphicElement>
   );
 };
+
+CardItem.displayName = "CardItem";
 
 // Create a hook to use the context
 export const useMouseEnter = () => {
