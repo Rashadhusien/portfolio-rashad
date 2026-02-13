@@ -26,17 +26,23 @@ export const SOCIAL_LINKS = [
   {
     title: "GitHub",
     url: "https://github.com/Rashadhusien",
+    buttonText: "GitHub",
     icon: <Github />,
+    description: "Explore my projects and contributions on GitHub",
   },
   {
     title: "LinkedIn",
     url: "https://www.linkedin.com/in/rashad-al-rifai-2770622aa/",
+    buttonText: "LinkedIn",
     icon: <Linkedin />,
+    description: "Connect with me on LinkedIn",
   },
   {
     title: "message",
     url: `https://wa.me/${PHONE_NUMBER}`,
+    buttonText: PHONE_NUMBER,
     icon: <MessageCircle />,
+    description: "Contact us directly via WhatsApp for a quick answer",
   },
 ];
 

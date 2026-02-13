@@ -11,7 +11,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="container  mx-auto flex justify-center items-center h-[calc(100vh-87px)] relative z-20 "
+      className="container  mx-auto flex justify-center items-center h-[calc(100vh-87px)] relative z-20  "
     >
       <div className="absolute inset-0 -z-10 hidden sm:block">
         <FloatingShapes />

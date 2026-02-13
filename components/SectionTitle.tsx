@@ -80,7 +80,7 @@ const SectionTitle = ({ title, spanTitle, description }: Props) => {
     );
   });
   return (
-    <div className="flex flex-col  gap-4 mt-4 mx-10">
+    <div className="flex flex-col  gap-4 mt-4 mb-10 mx-10">
       <span
         className="text-md font-bold uppercase tracking-wider mt-3"
         ref={spanRef}

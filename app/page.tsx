@@ -13,6 +13,7 @@ import Text from "@/components/Text";
 import Contact from "@/components/Contact";
 import Experinces from "@/components/Experinces";
 import ScrollBasedVelocity from "@/components/ScrollBasedVelocity";
+import Footer from "@/components/Footer";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 
@@ -35,7 +36,10 @@ export default function Home() {
 
   return (
     <main id="smooth-wrapper" className=" relative  z-10 " ref={main}>
-      <div id="smooth-content" className="">
+      <div
+        id="smooth-content"
+        className="bg-linear-to-br from-primary/10 to-secondary/10  border border-border hover:border-accent transition-colors"
+      >
         <Navbar />
         <Hero />
         <About />
@@ -45,7 +49,7 @@ export default function Home() {
         <Experinces />
         <ScrollBasedVelocity />
         <Contact />
-        {/* <div className="hidden md:block bg-dotted" /> */}
+        {/* <Footer /> */}
       </div>
     </main>
   );

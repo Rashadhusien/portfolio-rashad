@@ -31,18 +31,16 @@ const ScrollBasedVelocity = () => {
     );
   });
   return (
-    <section className="container mx-auto py-20 h-screen">
+    <section className="container mx-auto py-10">
       <ScrollVelocityContainer className="text-4xl font-bold md:text-7xl ">
         <ScrollVelocityRow
-          baseVelocity={0.1}
+          baseVelocity={1}
           direction={1}
           className="opacity-50"
         >
           Software Engineering Problem Solving Software Architecture Software
           Engineering Problem Solving Software Architecture Software Engineering
-          Problem Solving Software Architecture Software Engineering Problem
-          Solving Software Architecture Software Engineering Problem Solving
-          Software Architecture
+          Problem Solving Software
         </ScrollVelocityRow>
         <p className="text-2xl md:text-5xl lg:text-[4rem] text-center font-bold leading-relaxed my-10">
           Interested In{" "}
@@ -55,15 +53,13 @@ const ScrollBasedVelocity = () => {
           ?
         </p>
         <ScrollVelocityRow
-          baseVelocity={0.1}
+          baseVelocity={1}
           direction={-1}
           className="opacity-50"
         >
           Agile Development Frontend Development React Native Development Agile
           Development Frontend Development React Native Development Agile
-          Development Frontend Development React Native Development Agile
-          Development Frontend Development React Native Development Agile
-          Development Frontend Development React Native Development
+          Development Frontend Development
         </ScrollVelocityRow>
       </ScrollVelocityContainer>
     </section>

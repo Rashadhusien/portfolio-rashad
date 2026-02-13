@@ -6,17 +6,17 @@ import Image from "next/image";
 
 const Experinces = () => {
   return (
-    <section id="experinces" className="relative container mx-auto">
+    <section id="experinces" className="relative ">
       <div className="sm:mx-20 sm:py-20">
         <SectionTitle
           spanTitle="work"
           title="Experinces"
           description="A quick recap of where I've worked."
         />
-        <div className="flex justify-center items-center h-full text-center mt-10">
-          <StickyScroll content={EXPERINCES_CONTENT} />
-        </div>
+        {/* <div className="flex justify-center items-center h-full text-center mt-10"> */}
+        {/* </div> */}
       </div>
+      <StickyScroll content={EXPERINCES_CONTENT} />
       <Image
         src="/right-pattern.svg"
         alt="right pattern"
