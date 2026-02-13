@@ -30,7 +30,7 @@ const Text = () => {
   });
 
   return (
-    <div className="container mx-auto py-40">
+    <div className="container mx-auto py-20">
       <p className="text-4xl md:text-6xl lg:text-[4rem] text-center font-bold leading-relaxed">
         I have a{" "}
         <span
