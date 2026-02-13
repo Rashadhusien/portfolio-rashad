@@ -210,6 +210,16 @@
   border-radius: 20px;
 }
 
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
 /* start Navbar */
 .text {
   font-size: 10vw;

@@ -31,11 +31,11 @@ const Text = () => {
 
   return (
     <div className="container mx-auto py-40">
-      <p className="text-lg md:text-6xl lg:text-[4rem] text-center font-bold leading-relaxed">
+      <p className="text-4xl md:text-6xl lg:text-[4rem] text-center font-bold leading-relaxed">
         I have a{" "}
         <span
           ref={spanRef}
-          className="bg-[linear-gradient(90deg,white_0%,white_50%,#8b31ff_51%,#7000ff_100%)] bg-[length:200%_100%] bg-clip-text text-transparent"
+          className="bg-[linear-gradient(90deg,white_0%,white_50%,#8b31ff_51%,#7000ff_100%)] bg-size-[200%_100%] bg-clip-text text-transparent"
         >
           Strong
         </span>{" "}

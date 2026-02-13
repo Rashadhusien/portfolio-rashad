@@ -11,6 +11,8 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 import Skills from "@/components/Skills";
 import Text from "@/components/Text";
 import Contact from "@/components/Contact";
+import Experinces from "@/components/Experinces";
+import ScrollBasedVelocity from "@/components/ScrollBasedVelocity";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 
@@ -40,6 +42,8 @@ export default function Home() {
         <Skills />
         <Text />
         <Projects />
+        <Experinces />
+        <ScrollBasedVelocity />
         <Contact />
         {/* <div className="hidden md:block bg-dotted" /> */}
       </div>
