@@ -1,6 +1,7 @@
 import React from "react";
 import SectionTitle from "./SectionTitle";
 import ContactForm from "./ContactForm";
+import TechIconCloud from "./TechIconCloud";
 
 const Contact = () => {
   return (
@@ -11,7 +12,12 @@ const Contact = () => {
         description="Get In Touch"
       />
       <div className="flex justify-center items-center">
-        <ContactForm />
+        <div className="flex justify-center items-center flex-1">
+          <ContactForm />
+        </div>
+        <div className="hidden md:block   flex-1">
+          <TechIconCloud />
+        </div>
       </div>
     </section>
   );

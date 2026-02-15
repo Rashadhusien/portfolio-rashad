@@ -53,7 +53,7 @@ const Skills = () => {
     );
   });
   return (
-    <section id="skills" className="container mx-auto py-20 z-10 relative">
+    <section id="skills" className=" py-20 z-10 relative">
       <SectionTitle
         title="Skills"
         spanTitle="My Skills"

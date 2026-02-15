@@ -38,7 +38,7 @@ export default function Home() {
     <main id="smooth-wrapper" className=" relative  z-10 " ref={main}>
       <div
         id="smooth-content"
-        className="bg-linear-to-br from-primary/10 to-secondary/10  border border-border hover:border-accent transition-colors"
+        // className="bg-linear-to-br from-primary/10 to-secondary/10  border border-border hover:border-accent transition-colors"
       >
         <Navbar />
         <Hero />
@@ -49,7 +49,7 @@ export default function Home() {
         <Experinces />
         <ScrollBasedVelocity />
         <Contact />
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </main>
   );

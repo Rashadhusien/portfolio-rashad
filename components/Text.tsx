@@ -35,7 +35,7 @@ const Text = () => {
         I have a{" "}
         <span
           ref={spanRef}
-          className="bg-[linear-gradient(90deg,white_0%,white_50%,#8b31ff_51%,#7000ff_100%)] bg-size-[200%_100%] bg-clip-text text-transparent"
+          className="bg-[linear-gradient(90deg,white_0%,white_50%,#8b31ff_51%,#7000ff_100%)] font-extrabold bg-size-[200%_100%] bg-clip-text text-transparent"
         >
           Strong
         </span>{" "}

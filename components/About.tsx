@@ -52,8 +52,8 @@ const About = () => {
   });
 
   return (
-    <section id="about" className="py-20 container mx-auto z-30 relative ">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-20 z-30 relative ">
+      <div className=" px-4">
         <div className={`text-center mb-12 flex justify-center items-center `}>
           <div className="relative">
             <h2 className={`text-4xl md:text-5xl font-bold mb-4 `}>

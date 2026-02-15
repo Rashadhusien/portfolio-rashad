@@ -56,7 +56,7 @@ export default function ContactForm() {
   }
 
   return (
-    <Card className="w-full sm:max-w-lg">
+    <Card className="w-full max-sm:border-none sm:max-w-lg rounded-none sm:rounded-lg">
       <CardContent>
         <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>

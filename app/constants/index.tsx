@@ -1,7 +1,7 @@
-import { Github, Linkedin, MessageCircle } from "lucide-react";
-import Image from "next/image";
+import { Github, Linkedin, MessageCircle, Mail } from "lucide-react";
 
 export const PHONE_NUMBER = "+201110105367";
+export const MAIL = "rashadhusein440@gmail.com";
 
 export const NAV_LINKS = [
   {
@@ -42,6 +42,13 @@ export const SOCIAL_LINKS = [
     url: `https://wa.me/${PHONE_NUMBER}`,
     buttonText: PHONE_NUMBER,
     icon: <MessageCircle />,
+    description: "Contact us directly via WhatsApp for a quick answer",
+  },
+  {
+    title: "Email",
+    url: `mailto:${MAIL}`,
+    buttonText: MAIL,
+    icon: <Mail />,
     description: "Contact us directly via WhatsApp for a quick answer",
   },
 ];
