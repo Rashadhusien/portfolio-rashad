@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import ScrollSmoother from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
 import MobileNavbar from "./Mobile-Navbar";
 
@@ -68,6 +69,34 @@ const Navbar = () => {
   //   });
   // });
 
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    url: string,
+  ) => {
+    e.preventDefault();
+    const id = url.replace("#", "");
+    const smoother = ScrollSmoother.get();
+
+    if (url === "/") {
+      if (smoother) {
+        smoother.scrollTo(0, true);
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      return;
+    }
+
+    // For other sections, let ScrollSmoother handle it if available
+    if (smoother) {
+      smoother.scrollTo(`#${id}`, true, "top top");
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <nav
       // ref={navRef}
@@ -88,7 +117,9 @@ const Navbar = () => {
               key={link.title}
               className="hover:text-primary py-2 px-4 rounded-[10px] text-lg transition-colors"
             >
-              <a href={link.url}>{link.title}</a>
+              <a href={link.url} onClick={(e) => handleScroll(e, link.url)}>
+                {link.title}
+              </a>
             </li>
           ))}
         </ul>

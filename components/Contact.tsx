@@ -5,7 +5,7 @@ import TechIconCloud from "./TechIconCloud";
 
 const Contact = () => {
   return (
-    <section className="container  mx-auto    ">
+    <section id="contact" className="container  mx-auto    ">
       <SectionTitle
         spanTitle="contact"
         title="Contact Me"

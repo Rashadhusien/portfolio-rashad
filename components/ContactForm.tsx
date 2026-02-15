@@ -58,17 +58,17 @@ export default function ContactForm() {
   return (
     <Card className="w-full max-sm:border-none sm:max-w-lg rounded-none sm:rounded-lg">
       <CardContent>
-        <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
+        <form id="contact-form" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
             <Controller
               name="name"
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-rhf-demo-title">Name</FieldLabel>
+                  <FieldLabel htmlFor="contact-name">Name</FieldLabel>
                   <Input
                     {...field}
-                    id="form-rhf-demo-title"
+                    id="contact-name"
                     aria-invalid={fieldState.invalid}
                     placeholder="Your name"
                     autoComplete="off"
@@ -84,10 +84,10 @@ export default function ContactForm() {
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-rhf-demo-title">Email</FieldLabel>
+                  <FieldLabel htmlFor="contact-email">Email</FieldLabel>
                   <Input
                     {...field}
-                    id="form-rhf-demo-title"
+                    id="contact-email"
                     aria-invalid={fieldState.invalid}
                     placeholder="example@gmail.com
                     "
@@ -104,13 +104,11 @@ export default function ContactForm() {
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-rhf-demo-description">
-                    Message
-                  </FieldLabel>
+                  <FieldLabel htmlFor="contact-message">Message</FieldLabel>
                   <InputGroup>
                     <InputGroupTextarea
                       {...field}
-                      id="form-rhf-demo-description"
+                      id="contact-message"
                       placeholder="I'm having an issue with the login button on mobile."
                       rows={6}
                       className="min-h-24 resize-none"
@@ -136,7 +134,7 @@ export default function ContactForm() {
         <Field orientation="horizontal">
           <Button
             type="submit"
-            form="form-rhf-demo"
+            form="contact-form"
             className="w-full cursor-pointer"
             aria-label="Submit form"
           >

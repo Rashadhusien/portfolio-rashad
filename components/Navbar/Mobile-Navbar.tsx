@@ -1,4 +1,4 @@
-"use client";
+import { useState } from "react";
 import { NAV_LINKS } from "@/app/constants";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,11 +12,14 @@ import {
 import { Menu, X } from "lucide-react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import ScrollSmoother from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function MobileNavbar() {
+  const [open, setOpen] = useState(false);
+
   useGSAP(() => {
     const mm = gsap.matchMedia();
 
@@ -39,9 +42,42 @@ function MobileNavbar() {
 
     return () => mm.revert();
   });
+
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    url: string,
+  ) => {
+    e.preventDefault();
+    const id = url.replace("#", "");
+    const smoother = ScrollSmoother.get();
+
+    setOpen(false);
+
+    // allow drawer to close before scrolling
+    setTimeout(() => {
+      if (url === "/") {
+        if (smoother) {
+          smoother.scrollTo(0, true);
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+        return;
+      }
+
+      if (smoother) {
+        smoother.scrollTo(`#${id}`, true, "top top");
+      } else {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }, 300);
+  };
+
   return (
     <div className="flex flex-wrap gap-2">
-      <Drawer direction={"top"}>
+      <Drawer direction={"top"} open={open} onOpenChange={setOpen}>
         <DrawerTrigger asChild>
           <Button
             variant="outline"
@@ -51,7 +87,10 @@ function MobileNavbar() {
             <Menu />
           </Button>
         </DrawerTrigger>
-        <DrawerContent className="data-[vaul-drawer-direction=bottom]:max-h-[70vh] data-[vaul-drawer-direction=top]:max-h-[70vh] py-4">
+        <DrawerContent
+          onCloseAutoFocus={(e) => e.preventDefault()}
+          className="data-[vaul-drawer-direction=bottom]:max-h-[70vh] data-[vaul-drawer-direction=top]:max-h-[70vh] py-4"
+        >
           <DrawerHeader>
             <DrawerTitle className=" flex items-center justify-between">
               <span className="text-2xl font-bold">Menu</span>
@@ -69,22 +108,25 @@ function MobileNavbar() {
           <div className="no-scrollbar overflow-y-auto px-4">
             <ul className="flex flex-col items-start gap-4 ">
               {NAV_LINKS.map((link) => (
-                <DrawerClose key={link.title} asChild>
-                  <li className="w-full text py-2 rounded-[12px]">
-                    <a
-                      href={link.url}
-                      className="text-link py-2transition-colors hover:text-primary text-2xl font-bold w-full"
-                    >
-                      {link.title}
-                    </a>
-                    <a
-                      href={link.url}
-                      className=" transition-colors px-2 hover:text-primary text-2xl font-bold w-full"
-                    >
-                      {link.title}
-                    </a>
-                  </li>
-                </DrawerClose>
+                <li
+                  key={link.title}
+                  className="w-full text py-2 rounded-[12px]"
+                >
+                  <a
+                    href={link.url}
+                    onClick={(e) => handleScroll(e, link.url)}
+                    className="text-link py-2transition-colors hover:text-primary text-2xl font-bold w-full"
+                  >
+                    {link.title}
+                  </a>
+                  <a
+                    href={link.url}
+                    onClick={(e) => handleScroll(e, link.url)}
+                    className=" transition-colors px-2 hover:text-primary text-2xl font-bold w-full"
+                  >
+                    {link.title}
+                  </a>
+                </li>
               ))}
             </ul>
           </div>

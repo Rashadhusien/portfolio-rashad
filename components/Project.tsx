@@ -39,6 +39,7 @@ export default function ThreeDCardProject({
           href={link}
           translateZ="60"
           target="_blank"
+          aria-label="Live Preview"
           className=" text-sm max-w-sm mt-2 text-white absolute top-5 right-5 bg-secondary/40 p-2 rounded-[6px] "
         >
           <ArrowUpRight />
@@ -48,6 +49,7 @@ export default function ThreeDCardProject({
           href={githubLink}
           translateZ="60"
           target="_blank"
+          aria-label="GitHub Repository"
           className=" text-sm max-w-sm mt-2 text-white absolute top-5 right-20 bg-secondary/40 p-2 rounded-[6px] "
         >
           <Github />

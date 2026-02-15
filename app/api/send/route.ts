@@ -5,7 +5,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
-    console.log(resend);
+    // console.log(resend);
     // ✅ Get form data from frontend
     const { name, email, message } = await req.json();
 
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
       subject: "New Contact Message",
       react: EmailTemplate({ name, email, message }),
     });
-    console.log(data, error);
+    // console.log(data, error);
 
     if (error) {
       return Response.json({ error }, { status: 500 });
