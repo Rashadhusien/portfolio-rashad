@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useMotionValueEvent, useScroll } from "motion/react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -23,10 +23,16 @@ export const StickyScroll = ({
     container: ref,
     offset: ["start start", "end start"],
   });
-  const cardLength = content.length;
+
+  /*
+   * Optimization: Memoize breakpoints to avoid recalculating on every render.
+   * Calculations only need to happen when content length changes.
+   */
+  const cardsBreakpoints = React.useMemo(() => {
+    return content.map((_, index) => index / content.length);
+  }, [content]);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const cardsBreakpoints = content.map((_, index) => index / cardLength);
     const closestBreakpointIndex = cardsBreakpoints.reduce(
       (acc, breakpoint, index) => {
         const distance = Math.abs(latest - breakpoint);
@@ -37,7 +43,10 @@ export const StickyScroll = ({
       },
       0,
     );
-    setActiveCard(closestBreakpointIndex);
+    // Only update state if the index actually changed
+    if (closestBreakpointIndex !== activeCard) {
+      setActiveCard(closestBreakpointIndex);
+    }
   });
 
   const backgroundColors = [
@@ -51,13 +60,8 @@ export const StickyScroll = ({
     "linear-gradient(to bottom right, #f97316, #eab308)", // orange-500 to yellow-500
   ];
 
-  const [backgroundGradient, setBackgroundGradient] = useState(
-    linearGradients[0],
-  );
-
-  useEffect(() => {
-    setBackgroundGradient(linearGradients[activeCard % linearGradients.length]);
-  }, [activeCard]);
+  const backgroundGradient =
+    linearGradients[activeCard % linearGradients.length];
 
   return (
     <motion.div

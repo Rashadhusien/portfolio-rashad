@@ -52,14 +52,20 @@ const Hero = () => {
           <div className="flex items-center gap-4 mt-4">
             {SOCIAL_LINKS.map((link) => (
               <Link href={link.url} target="_blank" key={link.title}>
-                <Button className=" text-lg tracking-wider bg-transparent border-b border-primary rounded-none ">
+                <Button
+                  aria-label={link.title}
+                  className=" text-lg tracking-wider bg-transparent border-b border-primary rounded-none "
+                >
                   {link.icon}
                 </Button>
               </Link>
             ))}
           </div>
 
-          <button className="hero-button text-lg tracking-wider ">
+          <button
+            aria-label="Contact Me"
+            className="hero-button text-lg tracking-wider "
+          >
             Contact Me
           </button>
         </div>

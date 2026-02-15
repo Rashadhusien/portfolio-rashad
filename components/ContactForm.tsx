@@ -138,6 +138,7 @@ export default function ContactForm() {
             type="submit"
             form="form-rhf-demo"
             className="w-full cursor-pointer"
+            aria-label="Submit form"
           >
             Submit
           </Button>

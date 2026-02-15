@@ -2,18 +2,22 @@
 import About from "@/components/About";
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar/Navbar";
-import Projects from "@/components/Projects";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
-import Skills from "@/components/Skills";
-import Text from "@/components/Text";
-import Contact from "@/components/Contact";
-import Experinces from "@/components/Experinces";
-import ScrollBasedVelocity from "@/components/ScrollBasedVelocity";
-import Footer from "@/components/Footer";
+import dynamic from "next/dynamic";
+
+const Projects = dynamic(() => import("@/components/Projects"));
+const Skills = dynamic(() => import("@/components/Skills"));
+const Text = dynamic(() => import("@/components/Text"));
+const Contact = dynamic(() => import("@/components/Contact"));
+const Experinces = dynamic(() => import("@/components/Experinces"));
+const ScrollBasedVelocity = dynamic(
+  () => import("@/components/ScrollBasedVelocity"),
+);
+const Footer = dynamic(() => import("@/components/Footer"));
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 

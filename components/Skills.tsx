@@ -11,7 +11,7 @@ import SectionTitle from "./SectionTitle";
 gsap.registerPlugin(ScrollTrigger);
 
 const Skills = () => {
-  const firstSkillsRef = useRef<HTMLUListElement>(null);
+  const firstSkillsRef = useRef<HTMLDivElement>(null);
   const secondSkillsRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -61,7 +61,7 @@ const Skills = () => {
           modern frontend architecture."
       />
       <div className="flex flex-col  gap-4 mt-4 ">
-        <ul ref={firstSkillsRef}>
+        <div ref={firstSkillsRef}>
           {SKILLS_AREAS.map((area) => (
             <div key={area.title} className="flex flex-col  gap-4 mt-4 mx-10">
               <span className="text-md font-bold uppercase tracking-wider mt-3">
@@ -81,7 +81,7 @@ const Skills = () => {
               </ul>
             </div>
           ))}
-        </ul>
+        </div>
         <div
           className="grid grid-cols-2 gap-8 mx-10 w-fit"
           ref={secondSkillsRef}

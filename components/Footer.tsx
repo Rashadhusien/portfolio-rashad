@@ -6,9 +6,9 @@ const Footer = () => {
   return (
     <footer className="h-[50vh] sm:h-[80vh] mt-20 relative z-10 bg-primary">
       <div className="size-full">
-        <div className="container mx-auto pt-32">
+        <div className="container mx-auto  pt-20 sm:pt-32">
           <div className="flex flex-col items-center justify-center">
-            <h1 className="text-4xl font-bold text-white">
+            <h1 className="text-2xl sm:text-4xl font-bold text-white text-center w-full">
               Feel free to connect on social media.
             </h1>
             <ul className="flex items-center justify-center gap-10 mt-10">

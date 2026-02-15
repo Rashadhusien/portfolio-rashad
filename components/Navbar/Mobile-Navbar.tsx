@@ -10,7 +10,6 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Menu, X } from "lucide-react";
-import Link from "next/link";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -19,20 +18,26 @@ gsap.registerPlugin(ScrollTrigger);
 
 function MobileNavbar() {
   useGSAP(() => {
-    const textElements = gsap.utils.toArray(".text") as HTMLElement[];
+    const mm = gsap.matchMedia();
 
-    textElements.forEach((text) => {
-      gsap.to(text, {
-        backgroundSize: "100%",
-        ease: "none",
-        scrollTrigger: {
-          trigger: text,
-          start: "center 80%",
-          end: "center 20%",
-          scrub: true,
-        },
+    mm.add("(max-width: 768px)", () => {
+      const textElements = gsap.utils.toArray(".text") as HTMLElement[];
+
+      textElements.forEach((text) => {
+        gsap.to(text, {
+          backgroundSize: "100%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: text,
+            start: "center 80%",
+            end: "center 20%",
+            scrub: true,
+          },
+        });
       });
     });
+
+    return () => mm.revert();
   });
   return (
     <div className="flex flex-wrap gap-2">
@@ -41,6 +46,7 @@ function MobileNavbar() {
           <Button
             variant="outline"
             className="capitalize rounded-full h-10 w-10 shadow-none"
+            aria-label="Open menu"
           >
             <Menu />
           </Button>
@@ -53,6 +59,7 @@ function MobileNavbar() {
                 <Button
                   variant="outline"
                   className="rounded-full h-10 w-10 shadow-none"
+                  aria-label="Close menu"
                 >
                   <X />
                 </Button>
