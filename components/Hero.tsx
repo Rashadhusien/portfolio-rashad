@@ -1,6 +1,5 @@
 "uce client";
 import Image from "next/image";
-// import { Highlighter } from "@/components/highlighter";
 import AnimatedWords from "@/components/AnimatedWord";
 import RotatingBorder from "@/components/RotatingBorder";
 import Link from "next/link";
@@ -10,6 +9,7 @@ import FloatingShapes from "@/components/FloatingShapes";
 
 import { HeroData } from "@/lib/types";
 import { urlFor } from "@/lib/sanity";
+import { Highlighter } from "./highlighter";
 
 const Hero = ({ hero }: { hero: HeroData }) => {
   return (
@@ -37,19 +37,14 @@ const Hero = ({ hero }: { hero: HeroData }) => {
         <div className="flex flex-col items-center gap-4 mt-4">
           <div className="flex items-center justify-center gap-2 w-full">
             <span className="text-start text-lg font-bold py-2 px-4 bg-secondary/50 w-fit rounded-full">
-              {/* Hi, I&apos;m{" "}
-              <Highlighter color="#8c5cff" action="underline">
-                Rashad
-              </Highlighter> */}
               {hero.smallText}
             </span>
           </div>
           <h2 className="text-5xl font-bold mt-3">
-            {/* Web{" "}
-            <Highlighter color="#8c5cff" action="box">
-              Developer
-            </Highlighter> */}
             {hero.title}
+            <Highlighter color="#8c5cff" action="box">
+              {hero.highlightedTitle}
+            </Highlighter>
           </h2>
           <p className="mt-4">
             <AnimatedWords words={hero.loopWords} />

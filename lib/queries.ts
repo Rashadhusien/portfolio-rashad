@@ -17,3 +17,21 @@ export const aboutQuery = `
   secondDescription
 }
 `;
+
+export const skillsQuery = `
+*[_type == "skills"]{
+  title,
+  category,
+  skills[]
+}
+`;
+
+export const projectsQuery = `
+*[_type == "projects"]{
+  title,
+  description,
+  image,
+  githubLink,
+  liveLink
+}
+`;

@@ -5,10 +5,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionTitle from "./SectionTitle";
 import ThreeDCardProject from "./Project";
+import { ProjectData } from "@/lib/types";
+import { urlFor } from "@/lib/sanity";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Projects = () => {
+const Projects = ({ projects }: { projects: ProjectData[] }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const pinWrapRef = useRef<HTMLDivElement>(null);
 
@@ -58,27 +60,16 @@ const Projects = () => {
           ref={pinWrapRef}
           className="flex gap-16 items-center h-full px-20 w-max"
         >
-          <ThreeDCardProject
-            imageSrc="/projects/project-4.png"
-            title="Dev Overflow "
-            link="https://devflow.rashadhussein.com/"
-            githubLink="https://github.com/Rashadhusien/devflow"
-            description="DevFlow is a professional-grade web application designed to help developers ask questions, share knowledge, and collaborate on technical problems."
-          />
-          <ThreeDCardProject
-            imageSrc="/projects/project-2.png"
-            title="Storage Management App"
-            githubLink="https://github.com/Rashadhusien/storage_managment"
-            link="https://storage-managment-indol.vercel.app/"
-            description="A storage management application built with Next.js and Tailwind CSS, featuring a user-friendly interface for managing storage data."
-          />
-          <ThreeDCardProject
-            imageSrc="/projects/project-3.png"
-            title="Movie App"
-            githubLink="https://github.com/Rashadhusien/Movie-Application"
-            link="https://movieapp.rashadhussein.com/"
-            description="A responsive movie browsing web application that allows users to explore and discover movies by popularity, rating, or search."
-          />
+          {projects.map((project) => (
+            <ThreeDCardProject
+              key={project.title}
+              imageSrc={urlFor(project.image).url()}
+              title={project.title}
+              link={project.liveLink}
+              githubLink={project.githubLink}
+              description={project.description}
+            />
+          ))}
         </div>
       </section>
     </section>
