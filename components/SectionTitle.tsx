@@ -87,7 +87,7 @@ const SectionTitle = ({ title, spanTitle, description }: Props) => {
       >
         {spanTitle}
       </span>
-      <h2 className="text-6xl font-bold text-primary" ref={h2Ref}>
+      <h2 className="text-4xl sm:text-6xl font-bold text-primary" ref={h2Ref}>
         {title}
       </h2>
       <p

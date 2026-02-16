@@ -51,15 +51,16 @@ const Skills = ({ skills }: { skills: SkillsData[] }) => {
               ),
           )}
         </div>
-        <div className="grid grid-cols-2 gap-8 mx-10 w-fit">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mx-10 w-fit">
           <div>
-            {databaseSkills && (
-              <div className="flex flex-col  gap-4 mt-4 w-fit ">
-                <span className="text-md font-bold uppercase tracking-wider mt-3">
-                  {databaseSkills.title}
+            {" "}
+            {toolSkills && (
+              <div className="flex flex-col  gap-4 mt-4 ">
+                <span className="text-md font-bold uppercase tracking-wider mt-3 ">
+                  {toolSkills.title}
                 </span>
-                <ul className="flex flex-row  gap-8 mt-4 ">
-                  {databaseSkills.skills.map((skill) => (
+                <ul className="flex flex-row  gap-8 mt-4 w-fit">
+                  {toolSkills.skills.map((skill) => (
                     <li
                       key={skill._key}
                       className="flex justify-center items-center"
@@ -78,14 +79,13 @@ const Skills = ({ skills }: { skills: SkillsData[] }) => {
             )}
           </div>
           <div>
-            {" "}
-            {toolSkills && (
-              <div className="flex flex-col  gap-4 mt-4 ">
-                <span className="text-md font-bold uppercase tracking-wider mt-3 ">
-                  {toolSkills.title}
+            {databaseSkills && (
+              <div className="flex flex-col  gap-4 mt-4 w-fit ">
+                <span className="text-md font-bold uppercase tracking-wider mt-3">
+                  {databaseSkills.title}
                 </span>
-                <ul className="flex flex-row  gap-8 mt-4 w-fit">
-                  {toolSkills.skills.map((skill) => (
+                <ul className="flex flex-row  gap-8 mt-4 ">
+                  {databaseSkills.skills.map((skill) => (
                     <li
                       key={skill._key}
                       className="flex justify-center items-center"

@@ -2,7 +2,15 @@ import About from "@/components/About";
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar/Navbar";
 import dynamic from "next/dynamic";
-import { getAbout, getHero, getProjects, getSkills } from "@/lib/api";
+import {
+  getAbout,
+  getHero,
+  getProjects,
+  getSkills,
+  getFooter,
+  getSocial,
+  getExperinces,
+} from "@/lib/api";
 
 const Projects = dynamic(() => import("@/components/Projects"));
 const Skills = dynamic(() => import("@/components/Skills"));
@@ -19,19 +27,21 @@ export default async function Home() {
   const about = await getAbout();
   const skills = await getSkills();
   const projects = await getProjects();
-
+  const footer = await getFooter();
+  const social = await getSocial();
+  const experinces = await getExperinces();
   return (
     <main className=" relative  z-10 ">
       <Navbar />
-      <Hero hero={hero} />
+      <Hero hero={hero} social={social} />
       <About about={about} />
       <Skills skills={skills} />
       <Text />
       <Projects projects={projects} />
-      <Experinces />
+      <Experinces experinces={experinces} />
       <ScrollBasedVelocity />
       <Contact />
-      <Footer />
+      <Footer footer={footer} social={social} />
     </main>
   );
 }

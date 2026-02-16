@@ -1,10 +1,10 @@
 import React from "react";
 import SectionTitle from "./SectionTitle";
 import { StickyScroll } from "./ui/sticky-scroll-reveal";
-import { EXPERINCES_CONTENT } from "@/app/constants";
 import Image from "next/image";
+import { ExperincesData } from "@/lib/types";
 
-const Experinces = () => {
+const Experinces = ({ experinces }: { experinces: ExperincesData }) => {
   return (
     <section id="experinces" className="relative ">
       <div className="sm:mx-20 sm:py-20">
@@ -16,7 +16,7 @@ const Experinces = () => {
         {/* <div className="flex justify-center items-center h-full text-center mt-10"> */}
         {/* </div> */}
       </div>
-      <StickyScroll content={EXPERINCES_CONTENT} />
+      <StickyScroll content={experinces.experinces} />
       <Image
         src="/right-pattern.svg"
         alt="right pattern"

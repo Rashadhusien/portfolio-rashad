@@ -7,11 +7,11 @@ import { ICON_MAP } from "../app/constants";
 import { Button } from "@/components/ui/button";
 import FloatingShapes from "@/components/FloatingShapes";
 
-import { HeroData } from "@/lib/types";
+import { HeroData, SocialData } from "@/lib/types";
 import { urlFor } from "@/lib/sanity";
 import { Highlighter } from "./highlighter";
 
-const Hero = ({ hero }: { hero: HeroData }) => {
+const Hero = ({ hero, social }: { hero: HeroData; social: SocialData }) => {
   return (
     <section
       id="hero"
@@ -51,7 +51,7 @@ const Hero = ({ hero }: { hero: HeroData }) => {
           </p>
 
           <div className="flex items-center gap-4 mt-4">
-            {hero.socialLinks.map((link) => (
+            {social.socialLinks.map((link) => (
               <Link href={link.url} target="_blank" key={link.title}>
                 <Button
                   aria-label={link.title}

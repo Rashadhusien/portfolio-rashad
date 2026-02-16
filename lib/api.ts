@@ -1,4 +1,12 @@
-import { aboutQuery, heroQuery, projectsQuery, skillsQuery } from "./queries";
+import {
+  aboutQuery,
+  footerQuery,
+  heroQuery,
+  projectsQuery,
+  skillsQuery,
+  socialQuery,
+  experincesQuery,
+} from "./queries";
 import { client } from "./sanity";
 
 export const revalidate = 60;
@@ -17,4 +25,16 @@ export async function getSkills() {
 
 export async function getProjects() {
   return client.fetch(projectsQuery);
+}
+
+export async function getFooter() {
+  return client.fetch(footerQuery);
+}
+
+export async function getSocial() {
+  return client.fetch(socialQuery);
+}
+
+export async function getExperinces() {
+  return client.fetch(experincesQuery);
 }

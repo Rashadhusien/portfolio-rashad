@@ -8,7 +8,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 const ScrollBasedVelocity = () => {
   const spanRef = useRef<HTMLSpanElement>(null);
 
@@ -16,10 +16,10 @@ const ScrollBasedVelocity = () => {
     gsap.fromTo(
       spanRef.current,
       {
-        backgroundPosition: "0% 0%", // يبدأ من اليمين
+        backgroundPosition: "0% 0%",
       },
       {
-        backgroundPosition: "100% 0%", // يتحرك للشمال
+        backgroundPosition: "100% 0%",
         ease: "none",
         scrollTrigger: {
           trigger: spanRef.current,
@@ -31,7 +31,7 @@ const ScrollBasedVelocity = () => {
     );
   });
   return (
-    <section className=" py-10">
+    <section className="container mx-auto py-10">
       <ScrollVelocityContainer className="text-4xl font-bold md:text-7xl ">
         <ScrollVelocityRow
           baseVelocity={1}
@@ -46,7 +46,7 @@ const ScrollBasedVelocity = () => {
           Interested In{" "}
           <span
             ref={spanRef}
-            className="bg-[linear-gradient(90deg,white_0%,white_50%,#8b31ff_51%,#7000ff_100%)] font-extrabold bg-size-[200%_100%] bg-clip-text text-transparent"
+            className="bg-[linear-gradient(90deg,white_0%,white_50%,#8b31ff_51%,#7000ff_100%)] bg-size-[200%_100%] bg-clip-text text-transparent"
           >
             Collaboration
           </span>{" "}

@@ -23,7 +23,6 @@ export interface HeroData {
   } | null;
   loopWords: string[];
   smallText: string;
-  socialLinks: SocialLink[];
   title: string;
   highlightedTitle: string;
 }
@@ -66,4 +65,26 @@ export interface ProjectData {
   };
   githubLink: string;
   liveLink: string;
+}
+
+export interface SocialData {
+  socialLinks: SocialLink[];
+}
+
+export interface FooterData {
+  title: string;
+}
+
+export interface ExperincesData {
+  _id: string;
+  title: string;
+  experinces: {
+    _key: string;
+    title: string;
+    description: string;
+    sectionColor: string;
+    cardText: string;
+    cardColor: string;
+    _type: "experinces";
+  }[];
 }

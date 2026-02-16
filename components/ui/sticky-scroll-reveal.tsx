@@ -6,17 +6,18 @@ import { cn } from "@/lib/utils";
 
 export const StickyScroll = ({
   content,
+
   contentClassName,
 }: {
   content: {
     title: string;
     description: string;
-    content?: React.ReactNode | any;
+    cardText?: React.ReactNode | string;
   }[];
   contentClassName?: string;
 }) => {
   const [activeCard, setActiveCard] = React.useState(0);
-  const ref = useRef<any>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     // uncomment line 22 and comment line 23 if you DONT want the overflow container and want to have it change on the entire page scroll
     // target: ref
@@ -51,7 +52,7 @@ export const StickyScroll = ({
 
   const backgroundColors = [
     "#0f172a", // slate-900
-    "#000000", // black
+    "#3f1d2e", // rose-dark
     "#171717", // neutral-900
   ];
   const linearGradients = [
@@ -105,11 +106,11 @@ export const StickyScroll = ({
       <div
         style={{ background: backgroundGradient }}
         className={cn(
-          "sticky top-24 hidden h-60 w-80 overflow-hidden rounded-md bg-white lg:block",
+          "sticky top-24 hidden h-60 w-80 overflow-hidden rounded-md bg-white lg:flex  justify-center items-center text-2xl font-bold",
           contentClassName,
         )}
       >
-        {content[activeCard].content ?? null}
+        {content[activeCard].cardText ?? null}
       </div>
     </motion.div>
   );
