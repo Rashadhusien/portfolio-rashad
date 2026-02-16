@@ -17,9 +17,9 @@ const Skills = dynamic(() => import("@/components/Skills"));
 const Text = dynamic(() => import("@/components/Text"));
 const Contact = dynamic(() => import("@/components/Contact"));
 const Experinces = dynamic(() => import("@/components/Experinces"));
-const ScrollBasedVelocity = dynamic(
-  () => import("@/components/ScrollBasedVelocity"),
-);
+// const ScrollBasedVelocity = dynamic(
+//   () => import("@/components/ScrollBasedVelocity"),
+// );
 const Footer = dynamic(() => import("@/components/Footer"));
 
 export default async function Home() {
@@ -39,7 +39,7 @@ export default async function Home() {
       <Text />
       <Projects projects={projects} />
       <Experinces experinces={experinces} />
-      <ScrollBasedVelocity />
+      {/* <ScrollBasedVelocity /> */}
       <Contact />
       <Footer footer={footer} social={social} />
     </main>
