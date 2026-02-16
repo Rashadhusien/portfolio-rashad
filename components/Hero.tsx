@@ -1,13 +1,17 @@
+"uce client";
 import Image from "next/image";
-import { Highlighter } from "@/components/highlighter";
+// import { Highlighter } from "@/components/highlighter";
 import AnimatedWords from "@/components/AnimatedWord";
 import RotatingBorder from "@/components/RotatingBorder";
 import Link from "next/link";
-import { SOCIAL_LINKS } from "../app/constants";
+import { ICON_MAP } from "../app/constants";
 import { Button } from "@/components/ui/button";
 import FloatingShapes from "@/components/FloatingShapes";
 
-const Hero = () => {
+import { HeroData } from "@/lib/types";
+import { urlFor } from "@/lib/sanity";
+
+const Hero = ({ hero }: { hero: HeroData }) => {
   return (
     <section
       id="hero"
@@ -22,7 +26,7 @@ const Hero = () => {
 
           <div className="p-2 flex justify-center items-center h-full w-full rounded-full">
             <Image
-              src={"/my-face.png"}
+              src={urlFor(hero.image).url()}
               alt="my face"
               width={100}
               height={100}
@@ -33,30 +37,32 @@ const Hero = () => {
         <div className="flex flex-col items-center gap-4 mt-4">
           <div className="flex items-center justify-center gap-2 w-full">
             <span className="text-start text-lg font-bold py-2 px-4 bg-secondary/50 w-fit rounded-full">
-              Hi, I&apos;m{" "}
+              {/* Hi, I&apos;m{" "}
               <Highlighter color="#8c5cff" action="underline">
                 Rashad
-              </Highlighter>
+              </Highlighter> */}
+              {hero.smallText}
             </span>
           </div>
           <h2 className="text-5xl font-bold mt-3">
-            Web{" "}
+            {/* Web{" "}
             <Highlighter color="#8c5cff" action="box">
               Developer
-            </Highlighter>
+            </Highlighter> */}
+            {hero.title}
           </h2>
           <p className="mt-4">
-            <AnimatedWords />
+            <AnimatedWords words={hero.loopWords} />
           </p>
 
           <div className="flex items-center gap-4 mt-4">
-            {SOCIAL_LINKS.map((link) => (
+            {hero.socialLinks.map((link) => (
               <Link href={link.url} target="_blank" key={link.title}>
                 <Button
                   aria-label={link.title}
                   className=" text-lg tracking-wider bg-transparent border-b border-primary rounded-none "
                 >
-                  {link.icon}
+                  {ICON_MAP[link.title.toLowerCase() as keyof typeof ICON_MAP]}
                 </Button>
               </Link>
             ))}
@@ -66,7 +72,7 @@ const Hero = () => {
             aria-label="Contact Me"
             className="hero-button text-lg tracking-wider "
           >
-            Contact Me
+            <a href={hero.contactButtonLink}>{hero.contactButtonText}</a>
           </button>
         </div>
       </div>

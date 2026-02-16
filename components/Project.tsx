@@ -25,7 +25,7 @@ export default function ThreeDCardProject({
           src={imageSrc}
           height="600"
           width="600"
-          className=" w-full object-cover rounded-xl  "
+          className=" w-full h-auto object-cover rounded-xl  "
           alt="thumbnail"
         />
         <CardItem

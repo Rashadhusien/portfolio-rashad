@@ -1,13 +1,8 @@
-"use client";
 import About from "@/components/About";
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar/Navbar";
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
 import dynamic from "next/dynamic";
+import { getAbout, getHero } from "@/lib/api";
 
 const Projects = dynamic(() => import("@/components/Projects"));
 const Skills = dynamic(() => import("@/components/Skills"));
@@ -19,42 +14,22 @@ const ScrollBasedVelocity = dynamic(
 );
 const Footer = dynamic(() => import("@/components/Footer"));
 
-gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
-
-export default function Home() {
-  const main = useRef<HTMLDivElement>(null);
-  const smoother = useRef<ScrollSmoother | null>(null);
-
-  useGSAP(
-    () => {
-      // create the smooth scroller
-      smoother.current = ScrollSmoother.create({
-        wrapper: "#smooth-wrapper",
-        content: "#smooth-content",
-        smooth: 2,
-        effects: true,
-      });
-    },
-    { scope: main },
-  );
+export default async function Home() {
+  const hero = await getHero();
+  const about = await getAbout();
 
   return (
-    <main id="smooth-wrapper" className=" relative  z-10 " ref={main}>
-      <div
-        id="smooth-content"
-        // className="bg-linear-to-br from-primary/10 to-secondary/10  border border-border hover:border-accent transition-colors"
-      >
-        <Navbar />
-        <Hero />
-        <About />
-        <Skills />
-        <Text />
-        <Projects />
-        <Experinces />
-        <ScrollBasedVelocity />
-        <Contact />
-        <Footer />
-      </div>
+    <main className=" relative  z-10 ">
+      <Navbar />
+      <Hero hero={hero} />
+      <About about={about} />
+      <Skills />
+      <Text />
+      <Projects />
+      <Experinces />
+      <ScrollBasedVelocity />
+      <Contact />
+      <Footer />
     </main>
   );
 }

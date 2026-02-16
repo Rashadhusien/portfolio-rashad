@@ -3,19 +3,10 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-export default function AnimatedWords() {
+export default function AnimatedWords({ words }: { words: string[] }) {
   const containerRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const words = [
-      "Frontend Developer",
-      "Crafting Code",
-      "Building Digital Experiences",
-      "Designing the Web",
-      "Turning Ideas Into Interfaces",
-      "Code Meets Creativity",
-      "Creating Interactive UIs",
-    ];
     let index = 0;
 
     const showWord = () => {

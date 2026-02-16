@@ -75,6 +75,7 @@ const Skills = () => {
                       alt={skill}
                       width={50}
                       height={50}
+                      className="size-[50px]"
                     />
                   </li>
                 ))}
@@ -106,6 +107,7 @@ const Skills = () => {
                         alt={skill}
                         width={50}
                         height={50}
+                        className="size-[50px]"
                       />
                     </li>
                   ))}
@@ -131,6 +133,7 @@ const Skills = () => {
                         alt={skill}
                         width={50}
                         height={50}
+                        className="size-[50px]"
                       />
                     </li>
                   ))}

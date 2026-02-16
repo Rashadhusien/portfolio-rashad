@@ -18,11 +18,16 @@ export async function POST(req: Request) {
     // console.log(data, error);
 
     if (error) {
+      console.error("Resend error:", error);
       return Response.json({ error }, { status: 500 });
     }
 
     return Response.json({ success: true, data });
   } catch (error) {
-    return Response.json({ error: "Something went wrong" }, { status: 500 });
+    console.error("Catch error:", error);
+    return Response.json(
+      { error: (error as Error).message || "Something went wrong" },
+      { status: 500 },
+    );
   }
 }

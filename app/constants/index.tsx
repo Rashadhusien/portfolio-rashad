@@ -49,9 +49,17 @@ export const SOCIAL_LINKS = [
     url: `mailto:${MAIL}`,
     buttonText: MAIL,
     icon: <Mail />,
-    description: "Contact us directly via WhatsApp for a quick answer",
+    description: "mail me for a quick answer",
   },
 ];
+export const ICON_MAP = {
+  github: <Github />,
+  linkedin: <Linkedin />,
+  whatsapp: <MessageCircle />,
+  message: <MessageCircle />,
+  mail: <Mail />,
+  email: <Mail />,
+};
 
 export const EXPERTISE_AREAS = [
   "Web Development",

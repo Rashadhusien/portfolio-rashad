@@ -6,10 +6,11 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import { Highlighter } from "./highlighter";
+import { AboutData } from "@/lib/types";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-const About = () => {
+const About = ({ about }: { about: AboutData }) => {
   const firstParagraphRef = useRef<HTMLParagraphElement>(null);
   const secondParagraphRef = useRef<HTMLParagraphElement>(null);
 
@@ -19,9 +20,11 @@ const About = () => {
       firstParagraphRef.current,
       {
         opacity: 1,
+        textShadow: "4px 4px 60px rgba(255,255,255,0.1)",
       },
       {
         opacity: 0.3,
+        textShadow: "none",
         ease: "power2.inOut",
         scrollTrigger: {
           trigger: secondParagraphRef.current,
@@ -37,9 +40,11 @@ const About = () => {
       secondParagraphRef.current,
       {
         opacity: 0.3,
+        textShadow: "none",
       },
       {
         opacity: 1,
+        textShadow: "4px 4px 60px rgba(255,255,255,0.1)",
         ease: "power2.inOut",
         scrollTrigger: {
           trigger: secondParagraphRef.current,
@@ -58,7 +63,7 @@ const About = () => {
           <div className="relative">
             <h2 className={`text-4xl md:text-5xl font-bold mb-4 `}>
               <Highlighter action="underline" color="#8c5cff">
-                About Me
+                {about.title}
               </Highlighter>
             </h2>
             {/* <div className="w-full h-1 bg-primary mx-auto"></div> */}
@@ -66,14 +71,8 @@ const About = () => {
         </div>{" "}
         <div className="container-text flex   items-center justify-center gap-4 w-full text-center  p-4 rounded-sm  ">
           <p className="text-lg md:text-5xl leading-relaxed font-bold max-w-6xl ">
-            <span ref={firstParagraphRef}>
-              I am a passionate software developer with experience in building
-              web applications.
-            </span>{" "}
-            <span ref={secondParagraphRef}>
-              I enjoy creating seamless user experiences and solving complex
-              problems with clean, efficient code.
-            </span>
+            <span ref={firstParagraphRef}>{about.firstDescription}</span>{" "}
+            <span ref={secondParagraphRef}>{about.secondDescription}</span>
           </p>
         </div>
       </div>
